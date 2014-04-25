@@ -1,0 +1,29 @@
+{
+  "name": "flickr-justified-gallery",
+  "version": "0.0.1",
+  "authors": [
+    "Kyle Ladd <kyle@laddk.com>"
+  ],
+  "description": "This JQuery plugin uses Miro Mannino's Justified Gallery with the Flickr API to emulate the Flickr photostream.",
+  "main": "flickrJustifiedGallery.js",
+  "keywords": [
+    "gallery",
+    "justified",
+    "image",
+    "layout",
+    "flickr"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.com/kladd/flickr-justified-gallery",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "justifiedGallery": "miromannino/Justified-Gallery"
+  }
+}
