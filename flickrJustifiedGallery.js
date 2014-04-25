@@ -1,8 +1,8 @@
-/*!
+/*
  * Flickr Justified Gallery - v0.0.1
  * http://github.com/kladd/flickr-justified-gallery/
- * Copyright (c) 2014 Kyle Ladd
- * Licensed under the MIT license.
+ *
+ * flickrJustifiedGallery.js
  */
 (function($) {
     $.fn.flickrJustifiedGallery = function (arg) {
@@ -15,38 +15,36 @@
             justifiedGallerySettings: undefined
         };
 
-        function checkSettings(context) {
-            if (context.settings.flickrApiKey == "")
+        function checkSettings(settings) {
+            if (settings.flickrApiKey == "")
                 throw 'flickrApiKey must be defined';
 
-            if (context.settings.flickrUserID == "")
+            if (settings.flickrUserID == "")
                 throw 'flickrUserID must be defined';
         }
 
         return this.each(function (index, gallery) {
-            var $gallery= $(gallery);
-            var context = {
-                settings: $.extend({}, defaults, arg)
-            };
+            var settings = $.extend({}, defaults, arg);
+            var $gallery = $(gallery);
 
-            checkSettings(context);
+            checkSettings(settings);
 
             var flickrData = {
-                method: context.settings.flickrApiMethod,
-                api_key: context.settings.flickrApiKey,
-                user_id: context.settings.flickrUserID,
-                per_page: context.settings.flickrPerPage,
+                method: settings.flickrApiMethod,
+                api_key: settings.flickrApiKey,
+                user_id: settings.flickrUserID,
+                per_page: settings.flickrPerPage,
                 format: "json",
                 nojsoncallback: 1
             };
             var flickrRequest = $.ajax({
                 type: "GET",
-                url: context.settings.flickrApiUrl,
+                url: settings.flickrApiUrl,
                 data: flickrData
             });
 
-            flickrRequest.done(function(response)) {
-                for (var i = 0; i < per_page; i++) {
+            flickrRequest.done(function(response) {
+                for (var i = 0; i < settings.flickrPerPage; i++) {
                     var photo = response.photos.photo[i];
                     var url = "http://farm" + photo.farm +
                         ".staticflickr.com/" + photo.server +
@@ -56,12 +54,12 @@
                                 '<img alt="' + title + '" src="' + url +'"/></a>';
                     $gallery.append(html);
                 }
-                $gallery.justifiedGallery(context.settings.justifiedGallerySettings);
-            }
+                $gallery.justifiedGallery(settings.justifiedGallerySettings);
+            });
 
             flickrRequest.fail(function(jqXhr, textStatus) {
                 throw "flickrRequest: " + textStatus;
             });
         });
     }
-}(JQuery));
+}(jQuery));
