@@ -24,6 +24,6 @@
     "tests"
   ],
   "dependencies": {
-    "justifiedGallery": "miromannino/Justified-Gallery"
+    "justified-gallery": "miromannino/Justified-Gallery"
   }
 }
