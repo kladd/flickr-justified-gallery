@@ -10,7 +10,7 @@
             flickrApiKey: "",
             flickrUserID: "",
             flickrApiMethod: "flickr.people.getPublicPhotos",
-            flickrApiUrl: "https://api.flickr.com/services/rest/",
+            flickrApiUrl: "https://api.flickr.com/services/rest/?jsoncallback=?",
             flickrPerPage: "15",
             justifiedGallerySettings: undefined
         };
@@ -34,14 +34,12 @@
                 api_key: settings.flickrApiKey,
                 user_id: settings.flickrUserID,
                 per_page: settings.flickrPerPage,
-                format: "json",
-                nojsoncallback: 1
+                format: "json"
             };
-            var flickrRequest = $.ajax({
-                type: "GET",
-                url: settings.flickrApiUrl,
-                data: flickrData
-            });
+
+            var flickrRequest = $.getJSON(
+                    settings.flickrApiUrl,
+                    flickrData);
 
             flickrRequest.done(function(response) {
                 for (var i = 0; i < settings.flickrPerPage; i++) {
@@ -58,7 +56,7 @@
             });
 
             flickrRequest.fail(function(jqXhr, textStatus) {
-                throw "flickrRequest: " + textStatus;
+                throw "flickrApiRequest: " + textStatus;
             });
         });
     }
