@@ -1,5 +1,5 @@
 /*
- * Flickr Justified Gallery - v0.0.1
+ * Flickr Justified Gallery - v0.0.3
  * http://github.com/kladd/flickr-justified-gallery/
  *
  * flickrJustifiedGallery.js
@@ -16,10 +16,10 @@
         };
 
         function checkSettings(settings) {
-            if (settings.flickrApiKey == "")
+            if (settings.flickrApiKey === "")
                 throw 'flickrApiKey must be defined';
 
-            if (settings.flickrUserID == "")
+            if (settings.flickrUserID === "")
                 throw 'flickrUserID must be defined';
         }
 
@@ -47,7 +47,7 @@
                     var url = "http://farm" + photo.farm +
                         ".staticflickr.com/" + photo.server +
                         "/" + photo.id + "_" + photo.secret + ".jpg";
-                    var title = (photo.title == "") ? "Untitled" : photo.title;
+                    var title = (photo.title === "") ? "Untitled" : photo.title;
                     var html = '<a href="https://www.flickr.com/photos/kyleladd/' + photo.id + '">' +
                                 '<img alt="' + title + '" src="' + url +'"/></a>';
                     $gallery.append(html);
@@ -59,5 +59,5 @@
                 throw "flickrApiRequest: " + textStatus;
             });
         });
-    }
+    };
 }(jQuery));
