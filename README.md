@@ -1,7 +1,7 @@
 ## Flickr Justified Gallery
 
 This gallery plugin allows you to create a Flickr photostream-like gallery for your application
-while still using Flickr to host your image files. The plugin use the Flickr API to gather a list
+while still using Flickr to host your image files. The plugin uses the Flickr API to gather a list
 of recently added public photos for a particular user and displays them in a justified gallery
 using ["Justified Gallery"](http://miromannino.com/projects/justified-gallery/) from Miro Mannino.
 
