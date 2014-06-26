@@ -42,7 +42,7 @@
                     flickrData);
 
             flickrRequest.done(function(response) {
-                for (var i = 0; i < settings.flickrPerPage; i++) {
+                for (var i = 0; i < response.photos.photo.length; i++) {
                     var photo = response.photos.photo[i];
                     var url = "http://farm" + photo.farm +
                         ".staticflickr.com/" + photo.server +
