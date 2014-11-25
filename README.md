@@ -25,7 +25,30 @@ $("#mygallery").justifiedGallery();
 with
 
 ```javascript
-$("#mygallery").flickrJustifiedGallery();
+$("#mygallery").flickrJustifiedGallery({
+	flickrApiKey: "YOUR_API_KEY",
+	flickrUserID: "YOUR_FLICKR_USER_ID",
+	flickrPerPage: 12
+});
+```
+
+Additional settings can be set through the `justifiedGallerySettings` parameter.
+
+Here's an example:
+
+```javascript
+$("#mygallery").flickrJustifiedGallery({
+	flickrApiKey: "YOUR_API_KEY",
+	flickrUserID: "YOUR_FLICKR_USER_ID",
+	flickrPerPage: 12,
+
+	justifiedGallerySettings: {
+		rowHeight: 212,
+		maxRowHeight: 312,
+		target: "_blank",
+		lastRow: "hide"
+	}
+});
 ```
 
 ## License
