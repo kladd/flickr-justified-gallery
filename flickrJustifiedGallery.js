@@ -1,5 +1,5 @@
 /*
- * Flickr Justified Gallery - v0.0.3
+ * Flickr Justified Gallery - v1.0.1
  * http://github.com/kladd/flickr-justified-gallery/
  *
  * flickrJustifiedGallery.js
@@ -34,7 +34,8 @@
                 api_key: settings.flickrApiKey,
                 user_id: settings.flickrUserID,
                 per_page: settings.flickrPerPage,
-                format: "json"
+                format: "json",
+                extras: "path_alias"
             };
 
             var flickrRequest = $.getJSON(
@@ -48,7 +49,7 @@
                         ".staticflickr.com/" + photo.server +
                         "/" + photo.id + "_" + photo.secret + ".jpg";
                     var title = (photo.title === "") ? "Untitled" : photo.title;
-                    var html = '<a href="https://www.flickr.com/photos/kyleladd/' + photo.id + '">' +
+                    var html = '<a href="https://www.flickr.com/photos/' + photo.pathalias + '/' + photo.id + '">' +
                                 '<img alt="' + title + '" src="' + url +'"/></a>';
                     $gallery.append(html);
                 }
